@@ -77,9 +77,6 @@ button:hover{
     transition: all 0.7s;
     transform: scale(1.1);
 }
-/* p.ultimas{
-    display: flex;
-} */
 .tarjeta button{
     display: flex;
     flex-flow: column wrap;
@@ -93,7 +90,7 @@ button:hover{
 }
 .bt:hover{
     transition: all 0.7s;
-    background-color: #f27405;
+    width: 12em
 }
 #logo{
     display: flex;
@@ -105,22 +102,32 @@ header div img{
 }
 #botones{
     display: flex;
-    flex-direction: column;
-    /* margin: 10%; */
+    flex-direction: row;
 }
 div button{
     margin: 5%;
-    background-color:sandybrown;
+    height: 5em;
+    background-image: url(https://i.postimg.cc/fbQVW5qG/button.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    background-color: rgba(253, 253, 253, 0);
+    box-sizing: border-box;
     border-style: none;
+    border: none;
     width: 12em;
-
 }
 .busca{
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin-right: 10%;
 }
 #buscar, #buscador{
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
     margin: 10%;
 }
