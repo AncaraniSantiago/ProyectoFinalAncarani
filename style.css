@@ -13,10 +13,11 @@ header{
     height: 20vh;
     justify-content: space-between;
     align-items: center;
+    padding: 1%;
 }
 div#logo:hover{
     transition:all 0.7s;
-    transform:scale(1.5,1.5);
+    transform:scale(1.1);
 }
 main section{
     display: flex;
