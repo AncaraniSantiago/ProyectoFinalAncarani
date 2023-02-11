@@ -1,59 +1,66 @@
 body{
     display: grid;
-    grid-template-rows: 30vh 60vh 10vh;
+    grid-template-rows: 10em 60em 30%;
+    align-content: space-between;
     background-color: rgb(255, 221, 185);
-    background-image:url(https://i.postimg.cc/kG72b57s/logo-Surat.png);
+    background-image:url(https://i.postimg.cc/vH7CcHxL/fondo-Surati.png);
     background-repeat: no-repeat;
     background-size: 100%;
-    background-position: -0px -15vh;
+    margin: 0;
 }
 header{
     display: flex;
     background-color: #f27405;
-    height: 20vh;
+    height: 10em;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
-    padding: 1%;
+    padding: 0%;
 }
-div#logo:hover{
-    transition:all 0.7s;
-    transform:scale(1.1);
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center
 }
 main section{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    height: 40vh;
+    justify-content: space-evenly;
+    height: auto;
 }
-.tarjetaCompra{
-    display: grid;
-    grid-template-rows: 15% 30% 10% 10% 10%;
-    width: 16em;
+footer{
+    display: flex;
+    background-color: #f27405;
+    width: 100%;
+}
+p{
+    display: flex;
+    flex-flow: column wrap;
+    align-content: center;
     justify-content: center;
-    background-image: url(https://i.postimg.cc/xkC07kj2/cards.png);
-    background-repeat: no-repeat;
-    background-size: contain;
+    font-size: 1.3em;
+    font-weight: bolder;
 }
-.tarjeta{
+.tarjeta, .tarjetaCompra, .bajoStock{
     display: grid;
-    width: 15em;
-    margin: 2em;
+    width: 18em;
     grid-template-rows: 15% 50% 15% 10%;
-    align-items: center;
     justify-items: center;
     background-image: url(https://i.postimg.cc/xkC07kj2/cards.png);
     background-repeat: no-repeat;
     background-size: contain;
 }
-.tarjeta:hover{
+.tarjetaCompra{
+    grid-template-rows: 15% 30% 10% 10% 10%;
+    justify-content: center;
+}
+.tarjeta:hover, .bajoStock:hover{
     transition: all 0.7s;
-    transform: scale(1.07);
+    transform: scale(1.06);
 }
 .bajoStock{
-    display: grid;
     grid-template-rows: 15% 50% 15% 10% 5%;
-    font-size: 0.7em;
-    width: 22em;
+    align-items: center;
 }
 #contenedorImg{
     display: flex;
@@ -66,19 +73,11 @@ main section{
     flex-flow: column wrap;
     margin: 5%;
 }
-p{
-    display: flex;
-    flex-flow: column wrap;
-    align-content: center;
-    justify-content: center;
-    font-size: 0.9em;
-    font-weight: bolder;
-}
 button:hover{
     transition: all 0.7s;
-    transform: scale(1.1);
+    transform: translateY(-0.4em);
 }
-.tarjeta button{
+.tarjeta button, .tarjetaCompra button, .bajoStock button{
     display: flex;
     flex-flow: column wrap;
     align-items: center;
@@ -89,12 +88,15 @@ button:hover{
     border-style: none;
     transform: none;
 }
-.bt:hover{
-    transition: all 0.7s;
-    width: 12em
-}
 #logo{
     display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 3%;
+}
+div#logo:hover{
+    transition:all 0.7s;
+    transform:scale(1.1);
 }
 header div img{
     margin-left: 70%;
@@ -107,7 +109,7 @@ header div img{
 }
 div button{
     margin: 5%;
-    height: 5em;
+    height: 3em;
     background-image: url(https://i.postimg.cc/fbQVW5qG/button.png);
     background-repeat: no-repeat;
     background-size: 100%;
@@ -116,13 +118,17 @@ div button{
     box-sizing: border-box;
     border-style: none;
     border: none;
-    width: 12em;
+    width: 11em;
 }
 .busca{
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-right: 10%;
+}
+.bt:hover{
+    transition: all 0.5s;
+    width: 12em
 }
 #buscar, #buscador{
     display: flex;
@@ -131,4 +137,8 @@ div button{
     align-content: center;
     justify-content: center;
     margin: 10%;
+}
+#buscar:hover{
+    transition: all 0.5s;
+    scale: 1.15;
 }
