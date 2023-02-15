@@ -52,11 +52,14 @@ p{
 .tarjeta, .tarjetaCompra, .bajoStock{
     display: grid;
     width: 15em;
+    height: auto;
     grid-template-rows: 15% 50% 15% 10%;
+    grid-template-columns: 100%;
     justify-items: center;
     background-image: url(https://i.postimg.cc/xkC07kj2/cards.png);
     background-repeat: no-repeat;
     background-size: contain;
+    background-position: center;
     margin: 1em;
 }
 #info{
@@ -68,16 +71,21 @@ p{
     border-radius: 1em;
     }
 .tarjetaCompra{
-    grid-template-rows: 15% 30% 10% 10% 10%;
+    grid-template-rows: 18% 30% 10% 10% 10%;
     justify-content: center;
+    width: 13em;
 }
 .tarjeta:hover, .bajoStock:hover{
     transition: all 0.7s;
     transform: scale(1.06);
 }
 .bajoStock{
-    grid-template-rows: 15% 50% 15% 10% 5%;
+    grid-template-rows: 15% 50% 15% 5%;
     align-items: center;
+}
+.ultimas{
+    margin: 1em;
+    font-size: large;
 }
 .toastify{
     height: auto;

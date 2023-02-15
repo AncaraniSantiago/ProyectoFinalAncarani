@@ -5,7 +5,7 @@ fetch("./data.json")
 
 function programa(arrProductos) {
   var arrCarro=[]
-
+console.log(arrProductos);
   if (localStorage.getItem("carrito")) {
     arrCarro = JSON.parse(localStorage.getItem("carrito"))
   }
@@ -72,18 +72,19 @@ function programa(arrProductos) {
   }
   function agregaCarro(e) { 
     let productoBuscado = arrProductos.find(producto => producto.id == e.target.id)
+    console.log(arrCarro.find(producto => producto.id == e.target.id));
     if (arrCarro.length===0) {
       agregaBt("compraron","Confirmar compra",comprarOn)
       agregaBt("mostCarr","Mostrar Carrito",verCarro1)
     }
-    if (arrCarro.indexOf(productoBuscado) == -1) {
+    if (arrCarro.find(producto => producto.id == e.target.id) == undefined) {
       arrCarro.push(productoBuscado);
       let prodCarro = arrCarro.find(producto => producto.id == e.target.id)
       prodCarro.cantidad = 1
       prodCarro.total = productoBuscado.cantidad*productoBuscado.precio
       toasty("Unidad agregada","#F2B705")
     }
-    else if (arrCarro.indexOf(productoBuscado) != -1 && productoBuscado.cantidad<productoBuscado.stock){
+    else if (arrCarro.find(producto => producto.id == e.target.id) != undefined && productoBuscado.cantidad<productoBuscado.stock){
       productoBuscado.cantidad++
       toasty("Unidad agregada","#F2B705")
     }
@@ -130,13 +131,11 @@ function programa(arrProductos) {
     }
     else {
       arrCarro.splice(posProdBuscado, 1)
-      toasty("Producto eliminado","rgb(158, 0, 0)")
+      toasty("Producto eliminado del carrito","rgb(158, 0, 0)")
       tot()
     }
     localStorage.setItem("carrito", JSON.stringify(arrCarro))    
     if (arrCarro.length===0) {
-      // quitaBt("compraron")
-      // quitaBt("mostCarr")
       todosProductos()
     }
     else{
@@ -171,8 +170,13 @@ function programa(arrProductos) {
     let info = document.getElementById("info")
     info.innerHTML=""
     let textInfo = document.createElement("div")
-    textInfo.innerHTML=`
-    <p>El total de su carrito suma : $${tot}</p>`
+    if (tot==0) {
+      textInfo.innerHTML=`<p>Agregue productos a su carrito para comenzar</p>`
+    }
+    else{
+      textInfo.innerHTML=`
+      <p>El total de su carrito suma : $${tot}</p>`
+    }
     info.append(textInfo)
   }
   function total(tot) {
@@ -193,7 +197,7 @@ function programa(arrProductos) {
     let productoGral = arrProductos.find(productoBd => productoBd.id === idq)
     let prodCarro = arrCarro.find(producto => producto.id === idq)
     if(prodCarro.cantidad <= productoGral.stock){productoGral.stock=(productoGral.stock)-(prodCarro.cantidad)}
-    else{alert("Confirmar compra, conflicto de stock renovado al actualizar")}
+    else{alert("Se pueden agregar más items que los existentes por conflicto de stock, al actualizar se renuevan las cantidades existentes")}
   }
   function toasty(text,background) {
     Toastify({

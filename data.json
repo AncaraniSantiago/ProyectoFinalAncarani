@@ -1,5 +1,5 @@
 [
-    {"id":"1", "nombre": "Jalea Ambar", "categoria": "(Env. descartable)","moneda":"$", "precio":2380, "stock":10,"cantidad":"0","total":"0","imgUrl":"https://i.postimg.cc/zHXpktcj/jalAmb.png"},
-    {"id":"2", "nombre": "Jalea Ambar", "categoria": "(Env. Retornable)","moneda":"$", "precio":1890, "stock":5,"cantidad":"0","total":"0","imgUrl":"https://i.postimg.cc/qgj17rNZ/jal-Amb-Reto.png"},
-    {"id":"3", "nombre": "Jalea Carmesi", "categoria": "(Env. descartable)","moneda":"$", "precio":1870, "stock":1,"cantidad":"0","total":"0","imgUrl":"https://i.postimg.cc/Jt1Tm0zk/jalCarme.png"}
+    {"id":1, "nombre": "Jalea Ambar", "categoria": "(Env. descartable)","moneda":"$", "precio":2380, "stock":10,"imgUrl":"https://i.postimg.cc/zHXpktcj/jalAmb.png"},
+    {"id":2, "nombre": "Jalea Ambar", "categoria": "(Env. Retornable)","moneda":"$", "precio":1890, "stock":5,"imgUrl":"https://i.postimg.cc/qgj17rNZ/jal-Amb-Reto.png"},
+    {"id":3, "nombre": "Jalea Carmesi", "categoria": "(Env. descartable)","moneda":"$", "precio":1870, "stock":1,"imgUrl":"https://i.postimg.cc/Jt1Tm0zk/jalCarme.png"}
 ]
