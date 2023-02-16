@@ -5,7 +5,6 @@ fetch("./data.json")
 
 function programa(arrProductos) {
   var arrCarro=[]
-console.log(arrProductos);
   if (localStorage.getItem("carrito")) {
     arrCarro = JSON.parse(localStorage.getItem("carrito"))
   }
@@ -72,7 +71,6 @@ console.log(arrProductos);
   }
   function agregaCarro(e) { 
     let productoBuscado = arrProductos.find(producto => producto.id == e.target.id)
-    console.log(arrCarro.find(producto => producto.id == e.target.id));
     if (arrCarro.length===0) {
       agregaBt("compraron","Confirmar compra",comprarOn)
       agregaBt("mostCarr","Mostrar Carrito",verCarro1)
@@ -128,7 +126,6 @@ console.log(arrProductos);
     textInfo.innerHTML=`<p>Estos son los productos de su carrito</p>`
     info.appendChild(textInfo)
   }
-
   function quitarCarro(e) {
     posProdBuscado = arrCarro.findIndex(producto => producto.id == e.target.id)
     if(arrCarro[posProdBuscado].cantidad > 1){
@@ -166,7 +163,7 @@ console.log(arrProductos);
     botones = document.getElementById("botones")
     bt = document.getElementById(idBoton)
     botones.removeChild(bt);
-}
+  } 
   function mostTotal(tot){
     let info = document.getElementById("info")
     info.innerHTML=""
