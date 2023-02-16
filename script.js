@@ -19,7 +19,6 @@ function programa(arrProductos) {
   buscador.onchange = filtrar
   let buscar = document.getElementById("buscar")
   buscar.onclick = filtrar
-  
   let mostTodos = document.getElementById("logo")
   mostTodos.onclick = todosProductos
   todosProductos()
