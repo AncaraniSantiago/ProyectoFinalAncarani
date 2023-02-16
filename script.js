@@ -77,19 +77,22 @@ console.log(arrProductos);
       agregaBt("compraron","Confirmar compra",comprarOn)
       agregaBt("mostCarr","Mostrar Carrito",verCarro1)
     }
+    if (arrCarro.find(producto => producto.id == e.target.id) != undefined){
+      let prodCarro = arrCarro.find(producto => producto.id == e.target.id)
+      if (prodCarro.cantidad<productoBuscado.stock) {
+        prodCarro.cantidad++
+        toasty("Unidad agregada","#F2B705","#000000")
+      }
+      else{
+        toasty("Maxima cantidad cargada! (stock: "+productoBuscado.stock+")","rgb(188, 0, 0)","#ffffff")
+      }
+    }
     if (arrCarro.find(producto => producto.id == e.target.id) == undefined) {
       arrCarro.push(productoBuscado);
       let prodCarro = arrCarro.find(producto => producto.id == e.target.id)
       prodCarro.cantidad = 1
       prodCarro.total = productoBuscado.cantidad*productoBuscado.precio
-      toasty("Unidad agregada","#F2B705")
-    }
-    else if (arrCarro.find(producto => producto.id == e.target.id) != undefined && productoBuscado.cantidad<productoBuscado.stock){
-      productoBuscado.cantidad++
-      toasty("Unidad agregada","#F2B705")
-    }
-    else{
-      toasty("Maxima cantidad cargada! (stock: "+productoBuscado.stock+")","rgb(188, 0, 0)")
+      toasty("Unidad agregada","#F2B705","#000000")
     }
     localStorage.setItem("carrito", JSON.stringify(arrCarro))
     tot()
@@ -120,18 +123,22 @@ console.log(arrProductos);
     todosProductos()
     }
     tot()
+    let info = document.getElementById("info")
+    let textInfo = document.createElement("div")
+    textInfo.innerHTML=`<p>Estos son los productos de su carrito</p>`
+    info.appendChild(textInfo)
   }
 
   function quitarCarro(e) {
     posProdBuscado = arrCarro.findIndex(producto => producto.id == e.target.id)
     if(arrCarro[posProdBuscado].cantidad > 1){
       arrCarro[posProdBuscado].cantidad--
-      toasty("Unidad removida","rgb(188, 0, 0)")
+      toasty("Unidad removida","rgb(188, 0, 0)","#ffffff")
       tot()
     }
     else {
       arrCarro.splice(posProdBuscado, 1)
-      toasty("Producto eliminado del carrito","rgb(158, 0, 0)")
+      toasty("Producto eliminado del carrito","rgb(158, 0, 0)","#ffffff")
       tot()
     }
     localStorage.setItem("carrito", JSON.stringify(arrCarro))    
@@ -144,13 +151,7 @@ console.log(arrProductos);
   }
   function comprarOn() {
     let tot = final()
-    total(tot)
-    arrCarro.forEach(producto => {
-      quitaStock(producto.id)
-    })
-    arrCarro = []
-    localStorage.removeItem("carrito")
-    todosProductos()
+    alertFinal(tot)
   }
   function agregaBt(idBt, text, func) {
     let btCompra = document.createElement("button")
@@ -179,8 +180,37 @@ console.log(arrProductos);
     }
     info.append(textInfo)
   }
-  function total(tot) {
-    alert("Gracias por su compra\n\nEl total a abonar es de: $ "+tot)
+  function alertFinal(tot) {
+    Swal.fire({
+      title: "El total a abonar es de: $ "+tot,
+      text: 'Desea confirmar su compra?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#298939',
+      cancelButtonColor: '#b23356',
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Confirmar Compra',
+      background:'#ffddb9'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Compra Realizada',
+          text: 'Pase a abonar por caja',
+          background:'#ffddb9',
+          confirmButtonColor: '#298939'
+        })
+        arrCarro.forEach(producto => {
+          quitaStock(producto.id)
+        })
+        arrCarro = []
+        localStorage.removeItem("carrito")
+        todosProductos()
+      }
+      else{
+        verCarro1()
+      }
+    })
   }
   function final() {
     let tot=Number()
@@ -197,9 +227,9 @@ console.log(arrProductos);
     let productoGral = arrProductos.find(productoBd => productoBd.id === idq)
     let prodCarro = arrCarro.find(producto => producto.id === idq)
     if(prodCarro.cantidad <= productoGral.stock){productoGral.stock=(productoGral.stock)-(prodCarro.cantidad)}
-    else{alert("Se pueden agregar más items que los existentes por conflicto de stock, al actualizar se renuevan las cantidades existentes")}
+    else{alert("Error 303 - Avise a su programador")}
   }
-  function toasty(text,background) {
+  function toasty(text,background,color) {
     Toastify({
       text,
       className: "info",
@@ -209,6 +239,7 @@ console.log(arrProductos);
       },
       style: {
         background,
+        color
       }
     }).showToast();
   }
