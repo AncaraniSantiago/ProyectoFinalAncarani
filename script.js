@@ -85,7 +85,7 @@ function programa(arrProductos) {
       }
     }
     if (arrCarro.find(producto => producto.id == e.target.id) == undefined) {
-      arrCarro.push(productoBuscado);
+      arrCarro.push(productoBuscado)
       let prodCarro = arrCarro.find(producto => producto.id == e.target.id)
       prodCarro.cantidad = 1
       prodCarro.total = productoBuscado.cantidad*productoBuscado.precio
@@ -161,7 +161,7 @@ function programa(arrProductos) {
   function quitaBt(idBoton) {
     botones = document.getElementById("botones")
     bt = document.getElementById(idBoton)
-    botones.removeChild(bt);
+    botones.removeChild(bt)
   } 
   function mostTotal(tot){
     let info = document.getElementById("info")
@@ -237,6 +237,6 @@ function programa(arrProductos) {
         background,
         color
       }
-    }).showToast();
+    }).showToast()
   }
 }
